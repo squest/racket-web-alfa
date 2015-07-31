@@ -29,17 +29,18 @@
 
 (define (app req)
   (begin (display req)
-	 (serve/dispatch (page-dispatch "/"))))
+	 (page-dispatch req)))
 
 (define public-dir "/Users/questmac/public/learning/racket/web/alfa/")
 
 (serve/servlet
- app
- #:port 4000
-
- #:servlet-path "/"
-
- #:server-root-path "/Users/questmac/public/learning/racket/web/alfa/")
+ app	       
+ #:launch-browser? #t
+ #:quit? #f
+ #:port 3000
+ #:extra-files-paths (list (build-path "js")
+			   (build-path "css"))
+ #:servlet-path "")
 
 
 
